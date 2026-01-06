@@ -1,0 +1,52 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Bebas+Neue&family=DM+Serif+Text:ital@0;1&family=Dancing+Script:wght@400..700&family=Liter&family=Oswald:wght@200..700&family=Playwrite+VN:wght@100..400&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Public+Sans:ital,wght@0,100..900;1,100..900&family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Liter&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap");
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 40px;
+}
+
+.nav-logo {
+  font-size: 25px;
+  font-weight: bolder;
+  color: #ff6d1f;
+  text-decoration: none;
+  font-family: "Playwrite VN", cursive;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+.input {
+  border: 2px solid #ff6d1f;
+  padding: 9px;
+  border-radius: 10px;
+  font-size: small;
+  font-weight: bold;
+  text-align: center;
+  color: #000000;
+  width: 25vw;
+  font-family: "Liter", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.input:focus {
+  color: #000000;
+  outline: none;
+}
+
+ul {
+  list-style-type: none;
+  display: flex;
+  gap: 20px;
+}
+
+ul li {
+  font-size: 16px;
+  color: #ff6d1f;
+  font-weight: bold;
+}
+
+
