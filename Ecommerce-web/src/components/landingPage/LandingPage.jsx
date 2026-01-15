@@ -1,6 +1,7 @@
 import "./LandingPage.css";
 import { Link } from "react-router-dom";
 import { FaShoppingCart } from "react-icons/fa";
+import SignUp from "../signUp/SignUp";
 
 function LandingPage() {
   return (
@@ -13,9 +14,11 @@ function LandingPage() {
           <Link to="/app/login" className="login-btn">
             Login
           </Link>
-          <Link to="/app/signup" className="signup-btn">
-            Sign Up
-          </Link>
+          {
+            <Link to="/app/Sign-up" className="signup-btn">
+              SignUp
+            </Link>
+          }
         </div>
       </nav>
 
@@ -31,9 +34,12 @@ function LandingPage() {
         <p className="hero-subtitle">Discover. Shop. Elevate your lifestyle.</p>
 
         <div className="hero-actions">
-          <Link to="/" className="enter-btn">
-            Enter Store
-          </Link>
+          {
+            <Link to="/app/Sign-up" className="enter-btn">
+              {" "}
+              Enter Store
+            </Link>
+          }
         </div>
       </section>
     </div>

@@ -6,7 +6,7 @@ import ApiContext from "../../context/apiContext";
 function Home() {
   const { data, searchItem, searchQuery } = useContext(ApiContext);
   console.log(searchQuery);
-  
+
   const [startProduct] = useState(() => Math.floor(Math.random() * 30));
   const [productNum, setProductNum] = useState(startProduct);
 

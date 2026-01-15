@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import ApiContext from "../../context/apiContext";
 import ProductCard from "../productCard/ProductCard";
+import "./Product.css";
 
 function Product() {
   const { data, searchItem } = useContext(ApiContext);
@@ -24,27 +25,31 @@ function Product() {
   // 🔍 SEARCH VIEW
   if (isSearchActive) {
     return (
-      <div className="still-you-want">
-        {filteredProducts.length > 0 ? (
-          filteredProducts.map((item) => (
-            <div className="product-component" key={item.id}>
-              <ProductCard data={item} />
-            </div>
-          ))
-        ) : (
-          <h3>No products found</h3>
-        )}
+      <div className="main-container">
+        <div className="still-you-want">
+          {filteredProducts.length > 0 ? (
+            filteredProducts.map((item) => (
+              <div className="product-component" key={item.id}>
+                <ProductCard data={item} />
+              </div>
+            ))
+          ) : (
+            <h3>No products found</h3>
+          )}
+        </div>
       </div>
     );
   }
 
   return (
-    <div className="still-you-want">
-      {products.slice(0, 12).map((item) => (
-        <div className="product-component" key={item.id}>
-          <ProductCard data={item} />
-        </div>
-      ))}
+    <div className="main-container">
+      <div className="still-you-want">
+        {products.slice(0, 12).map((item) => (
+          <div className="product-component" key={item.id}>
+            <ProductCard data={item} />
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

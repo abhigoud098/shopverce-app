@@ -29,16 +29,20 @@ form input {
   border-radius: 8px;
 }
 form input[type="button"] {
-  background-color: #ff6d1f;
+  background-color:#ff6d1f;
   color: #ffffff;
   font-size: 17px;
+  cursor: pointer;
   height: 50px;
 }
 form span {
   text-align: center;
   font-size: 16px;
   padding-top: 10px;
-  color: #706b6b;
+  color: #ff6d1f;
+}
+span {
+  color: #ff6d1f;
 }
 form span a {
   text-decoration: none;

@@ -48,7 +48,6 @@
   transform: scale(1.1);
 }
 
-/* ================= TOP RIGHT ICONS ================= */
 .top-icons {
   position: absolute;
   top: 10px;
@@ -91,12 +90,10 @@
   color: #e63946;
 }
 
-/* Liked (heart active) */
 .icon-btn.liked svg {
   color: #e63946;
 }
 
-/* ================= INFO SECTION ================= */
 .product-info {
   flex: 1;
   padding: 14px;

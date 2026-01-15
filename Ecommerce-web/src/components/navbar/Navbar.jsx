@@ -5,13 +5,8 @@ import ApiContext from "../../context/apiContext";
 import { FaUserCircle } from "react-icons/fa";
 
 function Navbar() {
-  const {
-    searchItem,
-    setSearchItem,
-    setSearchQuery,
-    user,
-    setUser,
-  } = useContext(ApiContext);
+  const { searchItem, setSearchItem, setSearchQuery, user, setUser } =
+    useContext(ApiContext);
 
   const handleKeyDown = (e) => {
     if (e.key === "Enter") {
@@ -28,9 +23,9 @@ function Navbar() {
   //   });
   // };
 
-  const handleLogout = () => {
-    setUser(null);
-  };
+  // const handleLogout = () => {
+  //   setUser(null);
+  // };
 
   return (
     <div className="nav-container">
@@ -51,15 +46,10 @@ function Navbar() {
         <Link to="/app/cart">Cart</Link>
       </ul>
 
-      <div className="auth-section">
+      {/* <div className="auth-section">
         {!user ? (
           <>
-            <button className="login-btn">
-              Login
-            </button>
-            <button className="signup-btn">
-              Sign Up
-            </button>
+            <button className="login-btn">Login</button>
           </>
         ) : (
           <div className="profile">
@@ -71,7 +61,7 @@ function Navbar() {
             </div>
           </div>
         )}
-      </div>
+      </div> */}
     </div>
   );
 }
