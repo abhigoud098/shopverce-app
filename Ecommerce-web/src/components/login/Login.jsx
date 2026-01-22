@@ -1,54 +1,76 @@
 import { Link, useNavigate } from "react-router-dom";
 import "./Login.css";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import ApiContext from "../../context/apiContext";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function Login() {
-  const { register, handleSubmit } = useForm();
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+
+  const { setUser } = useContext(ApiContext);
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
-    if (data.password === data.confirmPassword) {
-      const users = JSON.parse(localStorage.getItem("users")) || [];
+    const users = JSON.parse(localStorage.getItem("users")) || [];
 
-      const existingUser = users.find(
-        (user) => user.email === data.email && user.password === data.password,
-      );
+    const existingUser = users.find(
+      (user) => user.email === data.email && user.password === data.password,
+    );
 
-      if (existingUser) {
-        alert("Login Successful 🎉");
-        navigate("/app");
-      } else {
-        alert("Invalid Credentials ❌");
-      }
+    if (existingUser) {
+      console.log(existingUser);
+      setUser(existingUser);
+      toast.success("Login successful");
+      navigate("/app");
     } else {
-      alert("⚠️ Password and Confirm Password do not match");
+      toast.error("Invalid email or password");
     }
   };
 
   return (
     <>
+      <ToastContainer position="bottom-center" theme="colored" />
+
       <div className="login">
         <div className="hader">
           <span>Welcome Back..!</span>
         </div>
+
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register("Email")} placeholder="Email" />
           <input
-            type="password"
-            {...register("password")}
-            placeholder="Password"
+            type="email"
+            placeholder="Email address"
+            {...register("email", {
+              required: "Email is required",
+              pattern: {
+                value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                message: "Enter a valid email address",
+              },
+            })}
           />
+          {errors.email && <p className="error">{errors.email.message}</p>}
 
           <input
             type="password"
-            {...register("confirmPassword")}
-            placeholder="Confirm Password"
+            placeholder="Password"
+            {...register("password", {
+              required: "Password is required",
+            })}
           />
+          {errors.password && (
+            <p className="error">{errors.password.message}</p>
+          )}
 
           <input type="submit" value="Login" />
+
           <span>
-            {" "}
-            Not a member place {<Link to="/app/Sign-up">Sign-Up</Link>}
+            Not a member? <Link to="/app/Sign-up">Sign-Up</Link>
           </span>
         </form>
       </div>

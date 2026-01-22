@@ -45,3 +45,13 @@ form span a {
   color: rgba(36, 36, 207, 0.671);
   font-weight: 500;
 }
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+span {
+  color: #ff6d1f;
+}
+

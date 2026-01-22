@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Liter:wght@300;400;500;600&display=swap");
+
 .signup {
   max-width: 280px;
   background-color: #ffffff;
@@ -14,10 +16,23 @@
   font-weight: 400;
   color: #706b6b;
 }
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
+.gender-group {
+  height: 70px;
+  outline: none;
+  border: 1px solid #cccccc;
+  padding: 10px;
+  font-size: 15px;
+  border-radius: 8px;
+}
 form {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 7px;
   margin-top: 20px;
 }
 form input {
@@ -29,7 +44,7 @@ form input {
   border-radius: 8px;
 }
 form input[type="submit"] {
-  background-color:#ff6d1f;
+  background-color: #ff6d1f;
   color: #ffffff;
   font-size: 17px;
   cursor: pointer;
@@ -41,8 +56,9 @@ form span {
   padding-top: 10px;
   color: #ff6d1f;
 }
-span {
+.logo-name {
   color: #ff6d1f;
+  font-family: "Pacifico", cursive;
 }
 form span a {
   text-decoration: none;
