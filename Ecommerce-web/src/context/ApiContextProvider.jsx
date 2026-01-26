@@ -1,4 +1,4 @@
-import ApiContext from "./apiContext";
+import ApiContext from "./ApiContext";
 import { useEffect, useState } from "react";
 
 function ApiContextProvider({ children }) {

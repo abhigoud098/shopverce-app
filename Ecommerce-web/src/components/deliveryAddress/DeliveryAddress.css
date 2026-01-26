@@ -1,0 +1,93 @@
+.checkout-card {
+  background: #ffffff;
+  padding: 20px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  animation: fadeIn 0.4s ease;
+}
+
+.checkout-card h3 {
+  font-size: 18px;
+  margin-bottom: 14px;
+  color: #111;
+}
+
+/* INPUTS */
+.checkout-card input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  transition: border 0.25s ease, box-shadow 0.25s ease;
+}
+
+.checkout-card input:focus {
+  outline: none;
+  border-color: #111;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.08);
+}
+
+/* SAVE BUTTON */
+.save-btn {
+  width: 100%;
+  padding: 12px;
+  background: #111;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 6px;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.save-btn:hover {
+  background: #333;
+  transform: translateY(-1px);
+}
+
+/* SAVED ADDRESS VIEW */
+.checkout-card p {
+  font-size: 14px;
+  color: #333;
+  margin-bottom: 6px;
+}
+
+.checkout-card p strong {
+  font-size: 15px;
+  color: #000;
+}
+
+/* CHANGE BUTTON */
+.change-btn {
+  margin-top: 12px;
+  background: transparent;
+  border: 1px solid #111;
+  color: #111;
+  padding: 10px;
+  width: 100%;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.change-btn:hover {
+  background: #111;
+  color: #fff;
+}
+
+/* ANIMATION */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

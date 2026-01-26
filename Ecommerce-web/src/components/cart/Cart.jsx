@@ -1,29 +1,41 @@
 import "./Cart.css";
+import { Link } from "react-router-dom";
 
 function Cart() {
-  const cartItems = [
-    {
-      id: 1,
-      title: "Wireless Headphones",
-      price: 2999,
-      image: "https://i.imgur.com/ZANVnHE.png",
-      quantity: 1,
-    },
-    {
-      id: 2,
-      title: "Smart Watch",
-      price: 4999,
-      image: "https://i.imgur.com/8zQZ9Yy.png",
-      quantity: 2,
-    },
-  ];
+  const productInfo = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-  const subtotal = cartItems.reduce(
+  function removeItem(itemId) {
+    const updatedCart = productInfo.filter((item) => item.id !== itemId);
+
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+    location.reload();
+  }
+  function quantityIncrease(itemId) {
+    const updatedCart = productInfo.map((item) =>
+      item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item,
+    );
+
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+    location.reload();
+  }
+
+  function qunatityDecrease(itemId) {
+    const updatedCart = productInfo.map((item) =>
+      item.id === itemId && item.quantity > 1
+        ? { ...item, quantity: item.quantity - 1 }
+        : item,
+    );
+
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+    location.reload();
+  }
+
+  const subtotal = productInfo.reduce(
     (total, item) => total + item.price * item.quantity,
-    0
+    0,
   );
 
-  const delivery = subtotal > 5000 ? 0 : 199;
+  const delivery = subtotal > 500 ? 0 : 99;
   const total = subtotal + delivery;
 
   return (
@@ -32,21 +44,23 @@ function Cart() {
       <div className="cart-items">
         <h2>Your Cart</h2>
 
-        {cartItems.map((item) => (
+        {productInfo.map((item) => (
           <div className="cart-item" key={item.id}>
-            <img src={item.image} alt={item.title} />
+            <img src={item?.images[0]} alt={item.title} />
 
             <div className="item-info">
               <h4>{item.title}</h4>
               <p>₹{item.price}</p>
 
               <div className="quantity">
-                <button>-</button>
+                <button onClick={() => qunatityDecrease(item.id)}>-</button>
                 <span>{item.quantity}</span>
-                <button>+</button>
+                <button onClick={() => quantityIncrease(item.id)}>+</button>
               </div>
 
-              <button className="remove">Remove</button>
+              <button className="remove" onClick={() => removeItem(item.id)}>
+                Remove
+              </button>
             </div>
           </div>
         ))}
@@ -72,8 +86,8 @@ function Cart() {
           <span>Total</span>
           <span>₹{total}</span>
         </div>
-
-        <button className="checkout-btn">Proceed to Checkout</button>
+        
+        <Link to="/app/checkout"><button className="checkout-btn">Proceed to Checkout</button></Link>
       </div>
     </div>
   );

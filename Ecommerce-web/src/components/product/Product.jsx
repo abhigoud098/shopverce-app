@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import ApiContext from "../../context/apiContext";
+import ApiContext from "../../context/ApiContext";
 import ProductCard from "../productCard/ProductCard";
 import "./Product.css";
 

@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useContext, useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import ApiContext from "../../context/apiContext";
+import ApiContext from "../../context/ApiContext";
 
 function SignUp() {
   const { userInfo, setUserInfo } = useContext(ApiContext);
@@ -19,15 +19,27 @@ function SignUp() {
 
   const onSubmit = (data) => {
     setUserInfo(data);
-    reset();
-    toast.success("User registered successfully!");
   };
+
+  console.log(userInfo);
 
   useEffect(() => {
     if (Object.keys(userInfo).length > 0) {
       const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
+      const userExists = storedUsers.find(
+        (user) => user.email.toLowerCase() === userInfo.email.toLowerCase(),
+      );
+      if (userExists) {
+        toast.error(
+          "This email or user alrady exist please enter another email..!",
+        );
+        return;
+      }
       const updatedUsers = [...storedUsers, userInfo];
       localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+      toast.success("User registered successfully!");
+      reset();
     }
   }, [userInfo]);
 

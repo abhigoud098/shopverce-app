@@ -7,8 +7,11 @@ import LandingPage from "./components/landingPage/LandingPage";
 import Login from "./components/login/Login";
 import "./App.css";
 import SignUp from "./components/signUp/SignUp";
+import Checkout from "./components/checkout/Checkout";
+import DeliveryAddress from "./components/deliveryAddress/DeliveryAddress";
 
 function App() {
+
   const router = createBrowserRouter([
     {
       path: "/",
@@ -29,6 +32,8 @@ function App() {
         { path: "/app", element: <Home /> },
         { path: "/app/product", element: <Product /> },
         { path: "/app/cart", element: <Cart /> },
+        { path: "/app/checkout", element: <Checkout /> },
+        { path: "/app/DeliveryAddress", element: <DeliveryAddress/>}
       ],
     },
   ]);

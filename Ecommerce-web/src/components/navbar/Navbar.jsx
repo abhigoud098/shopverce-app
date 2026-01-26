@@ -1,7 +1,7 @@
 import { useContext, useState, useRef, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
-import ApiContext from "../../context/apiContext";
+import ApiContext from "../../context/ApiContext";
 import "./Navbar.css";
 
 function Navbar() {

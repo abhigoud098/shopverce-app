@@ -19,6 +19,23 @@ function ProductCard({ data }) {
       alert("Link copied");
     }
   };
+  function sendIdOfProduct(id) {
+    const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
+
+    const existingProduct = storedCartItems.find((item) => item.id === id);
+    console.log(existingProduct);
+
+    if (existingProduct) {
+      existingProduct.quantity += 1;
+    } else {
+      storedCartItems.push({
+        ...data,
+        quantity: 1,
+      });
+    }
+
+    localStorage.setItem("cartItems", JSON.stringify(storedCartItems));
+  }
 
   return (
     <div className="product-card">
@@ -46,7 +63,9 @@ function ProductCard({ data }) {
           <span className="original-price">₹{data?.price}</span>
         </div>
 
-        <button className="cart-btn">Add to Cart</button>
+        <button className="cart-btn" onClick={() => sendIdOfProduct(data.id)}>
+          Add to Cart
+        </button>
       </div>
     </div>
   );

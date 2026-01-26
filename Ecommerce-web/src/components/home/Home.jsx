@@ -1,8 +1,9 @@
 import { useContext, useEffect, useState, useMemo } from "react";
 import ProductCard from "../productCard/ProductCard";
 import "./Home.css";
-import ApiContext from "../../context/apiContext";
+import ApiContext from "../../context/ApiContext";
 import Fuse from "fuse.js";
+import { Link } from "react-router-dom";
 
 function Home() {
   const { data, searchItem } = useContext(ApiContext);
@@ -67,7 +68,7 @@ function Home() {
               <span>{product?.brand}</span>
               <span id="availabilityStatus">{product?.availabilityStatus}</span>
             </div>
-            <button className="shop-btn">Shop Now</button>
+            <Link to="/app/product"><button className="shop-btn">Shop Now</button></Link>
           </div>
         </div>
       )}
