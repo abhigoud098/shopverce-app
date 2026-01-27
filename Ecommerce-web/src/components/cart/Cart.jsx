@@ -30,10 +30,10 @@ function Cart() {
     location.reload();
   }
 
-  const subtotal = productInfo.reduce(
+  const subtotal = Math.floor(productInfo.reduce(
     (total, item) => total + item.price * item.quantity,
     0,
-  );
+  ));
 
   const delivery = subtotal > 500 ? 0 : 99;
   const total = subtotal + delivery;
@@ -51,7 +51,8 @@ function Cart() {
             <div className="item-info">
               <h4>{item.title}</h4>
               <p>₹{item.price}</p>
-
+              <h5>Discount: {item.discountPercentage}</h5>
+              <p>{item.returnPolicy}</p>
               <div className="quantity">
                 <button onClick={() => qunatityDecrease(item.id)}>-</button>
                 <span>{item.quantity}</span>
@@ -86,8 +87,10 @@ function Cart() {
           <span>Total</span>
           <span>₹{total}</span>
         </div>
-        
-        <Link to="/app/checkout"><button className="checkout-btn">Proceed to Checkout</button></Link>
+
+        <Link to="/app/checkout">
+          <button className="checkout-btn">Proceed to Checkout</button>
+        </Link>
       </div>
     </div>
   );

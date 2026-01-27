@@ -35,7 +35,7 @@ function Login() {
 
   return (
     <>
-      <ToastContainer position="bottom-center" theme="colored" />
+      <ToastContainer position="top-right" theme="colored" />
 
       <div className="login">
         <div className="hader">

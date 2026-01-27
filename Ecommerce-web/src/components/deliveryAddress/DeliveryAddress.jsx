@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./DeliveryAddress.css";
+import "./DeliveryAddress.css"
 
-function DeliveryAddress() {
+function DeliveryAddress({ onSave, onClose }) {
   const [address, setAddress] = useState({
     name: "",
     phone: "",
@@ -9,8 +9,6 @@ function DeliveryAddress() {
     city: "",
     pincode: "",
   });
-
-  const [isAddressSaved, setIsAddressSaved] = useState(false);
 
   function handleChange(e) {
     setAddress({
@@ -20,57 +18,52 @@ function DeliveryAddress() {
   }
 
   function handleSubmit() {
-    setIsAddressSaved(true);
+    onSave(address);
   }
 
   return (
     <div className="checkout-card">
-      <h3>Delivery Address</h3>
+      <h3 className="diliveryHadding">Delivery Address</h3>
 
-      {!isAddressSaved ? (
-        <>
-          <input
-            name="name"
-            placeholder="Full Name"
-            onChange={handleChange}
-          />
-          <input
-            name="phone"
-            placeholder="Mobile Number"
-            onChange={handleChange}
-          />
-          <input
-            name="addressLine"
-            placeholder="Address"
-            onChange={handleChange}
-          />
-          <input
-            name="city"
-            placeholder="City"
-            onChange={handleChange}
-          />
-          <input
-            name="pincode"
-            placeholder="Pincode"
-            onChange={handleChange}
-          />
+      <input
+        name="name"
+        placeholder="Full Name"
+        value={address.name}
+        onChange={handleChange}
+      />
+      <input
+        name="phone"
+        placeholder="Mobile Number"
+        value={address.phone}
+        onChange={handleChange}
+      />
+      <input
+        name="addressLine"
+        placeholder="Address"
+        value={address.addressLine}
+        onChange={handleChange}
+      />
+      <input
+        name="city"
+        placeholder="City"
+        value={address.city}
+        onChange={handleChange}
+      />
+      <input
+        name="pincode"
+        placeholder="Pincode"
+        value={address.pincode}
+        onChange={handleChange}
+      />
 
-          <button className="save-btn" onClick={handleSubmit}>
-            Save Address
-          </button>
-        </>
-      ) : (
-        <>
-          <p><strong>{address.name}</strong></p>
-          <p>{address.phone}</p>
-          <p>{address.addressLine}</p>
-          <p>{address.city} - {address.pincode}</p>
-
-          <button className="change-btn" onClick={() => setIsAddressSaved(false)}>
-            Change Address
-          </button>
-        </>
-      )}
+      <div className="modal-actions">
+        <button className="save-btn" onClick={handleSubmit}>
+          Save Address
+        </button>
+        <button className="change-btn" onClick={onClose}>
+          Cancel
+        </button>
+      </div>
     </div>
   );
 }

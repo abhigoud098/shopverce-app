@@ -45,8 +45,8 @@ function SignUp() {
 
   return (
     <>
-      <ToastContainer position="bottom-center" theme="colored" />
-
+      <ToastContainer position="top-right" theme="colored" />
+      
       <div className="signup">
         <div className="hader">
           <span className="logo-name">Shop Verse</span>
