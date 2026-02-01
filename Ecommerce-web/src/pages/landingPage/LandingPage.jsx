@@ -9,6 +9,15 @@ function LandingPage() {
       <nav className="landing-nav">
         <h2 className="brand">ShopVerse</h2>
 
+        <div
+          style={{
+            display: "flex",
+            gap: "20px",
+            justifyContent: "center",
+            marginTop: "100px",
+          }}
+        ></div>
+
         <div className="auth-buttons">
           <Link to="/app/login" className="login-btn">
             Login

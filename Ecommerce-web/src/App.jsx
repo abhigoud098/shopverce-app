@@ -1,16 +1,25 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Layout from "./Layout";
-import Home from "./components/home/Home";
-import Product from "./components/product/Product";
-import Cart from "./components/cart/Cart";
-import LandingPage from "./components/landingPage/LandingPage";
-import Login from "./components/login/Login";
+import Home from "./pages/home/Home";
+import Product from "./pages/product/Product";
+import Cart from "./pages/cart/Cart";
+import LandingPage from "./pages/landingPage/LandingPage";
+import Login from "./pages/login/Login";
 import "./App.css";
-import SignUp from "./components/signUp/SignUp";
-import Checkout from "./components/checkout/Checkout";
-import DeliveryAddress from "./components/deliveryAddress/DeliveryAddress";
+import SignUp from "./pages/signUp/SignUp";
+import Checkout from "./pages/checkout/Checkout";
+import DeliveryAddress from "./pages/deliveryAddress/DeliveryAddress";
+import { useContext } from "react";
+import ApiContext from "./context/ApiContext";
 
 function App() {
+  const { theam } = useContext(ApiContext);
+
+  if (theam) {
+    document.body.classList.add("dark");
+  } else {
+    document.body.classList.remove("dark");
+  }
 
   const router = createBrowserRouter([
     {
@@ -33,7 +42,7 @@ function App() {
         { path: "/app/product", element: <Product /> },
         { path: "/app/cart", element: <Cart /> },
         { path: "/app/checkout", element: <Checkout /> },
-        { path: "/app/DeliveryAddress", element: <DeliveryAddress/>}
+        { path: "/app/DeliveryAddress", element: <DeliveryAddress /> },
       ],
     },
   ]);

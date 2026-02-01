@@ -1,45 +1,48 @@
+import { useContext } from "react";
 import "./Cart.css";
 import { Link } from "react-router-dom";
+import ApiContext from "../../context/ApiContext";
 
 function Cart() {
   const productInfo = JSON.parse(localStorage.getItem("cartItems")) || [];
+  const { them } = useContext(ApiContext);
 
   function removeItem(itemId) {
     const updatedCart = productInfo.filter((item) => item.id !== itemId);
-
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
     location.reload();
   }
+
   function quantityIncrease(itemId) {
     const updatedCart = productInfo.map((item) =>
-      item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item,
+      item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
     );
-
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
     location.reload();
   }
 
-  function qunatityDecrease(itemId) {
+  function quantityDecrease(itemId) {
     const updatedCart = productInfo.map((item) =>
       item.id === itemId && item.quantity > 1
         ? { ...item, quantity: item.quantity - 1 }
-        : item,
+        : item
     );
-
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
     location.reload();
   }
 
-  const subtotal = Math.floor(productInfo.reduce(
-    (total, item) => total + item.price * item.quantity,
-    0,
-  ));
+  const subtotal = Math.floor(
+    productInfo.reduce(
+      (total, item) => total + item.price * item.quantity,
+      0
+    )
+  );
 
   const delivery = subtotal > 500 ? 0 : 99;
   const total = subtotal + delivery;
 
   return (
-    <div className="cart-page">
+    <div className={`cart-page ${them ? "dark" : "light"}`}>
       {/* LEFT */}
       <div className="cart-items">
         <h2>Your Cart</h2>
@@ -50,11 +53,12 @@ function Cart() {
 
             <div className="item-info">
               <h4>{item.title}</h4>
-              <p>₹{item.price}</p>
-              <h5>Discount: {item.discountPercentage}</h5>
+              <p>${item.price}</p>
+              <h5>Discount: {item.discountPercentage}%</h5>
               <p>{item.returnPolicy}</p>
+
               <div className="quantity">
-                <button onClick={() => qunatityDecrease(item.id)}>-</button>
+                <button onClick={() => quantityDecrease(item.id)}>-</button>
                 <span>{item.quantity}</span>
                 <button onClick={() => quantityIncrease(item.id)}>+</button>
               </div>
@@ -73,19 +77,19 @@ function Cart() {
 
         <div className="summary-row">
           <span>Subtotal</span>
-          <span>₹{subtotal}</span>
+          <span>${subtotal}</span>
         </div>
 
         <div className="summary-row">
           <span>Delivery</span>
-          <span>{delivery === 0 ? "Free" : `₹${delivery}`}</span>
+          <span>{delivery === 0 ? "Free" : `$${delivery}`}</span>
         </div>
 
         <hr />
 
         <div className="summary-row total">
           <span>Total</span>
-          <span>₹{total}</span>
+          <span>${total}</span>
         </div>
 
         <Link to="/app/checkout">

@@ -1,9 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { FaHeart, FaRegHeart, FaShareAlt } from "react-icons/fa";
 import "./ProductCard.css";
+import ApiContext from "../../context/ApiContext";
 
 function ProductCard({ data }) {
   const [liked, setLiked] = useState(false);
+  const { theam } = useContext(ApiContext);
 
   const handleShare = async () => {
     const shareUrl = window.location.href;
@@ -19,6 +21,7 @@ function ProductCard({ data }) {
       alert("Link copied");
     }
   };
+
   function sendIdOfProduct(id) {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
@@ -38,7 +41,7 @@ function ProductCard({ data }) {
   }
 
   return (
-    <div className="product-card">
+    <div className={`productcard ${theam ? "dark" : ""}`}>
       <div className="image-box">
         <img src={data?.images[0]} alt={data?.brand} />
 
@@ -56,14 +59,14 @@ function ProductCard({ data }) {
 
       <div className="product-info">
         <h3>{data?.title}</h3>
-        <p className="desc">{data?.description}</p>
+        <p c className={`desc ${theam ? "dark" : ""}`} >{data?.description}</p>
 
         <div className="rating-price">
           <span className="rating">⭐ {data?.rating}</span>
-          <span className="original-price">₹{data?.price}</span>
+          <span className="original-price">${data?.price}</span>
         </div>
 
-        <button className="cart-btn" onClick={() => sendIdOfProduct(data.id)}>
+        <button  className={`cart-btn ${theam ? "dark" : "light"}`} onClick={() => sendIdOfProduct(data.id)}>
           Add to Cart
         </button>
       </div>

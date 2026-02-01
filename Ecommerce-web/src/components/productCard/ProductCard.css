@@ -1,9 +1,40 @@
-.product-card {
-  height: 43vh;
+/* ================= THEME VARIABLES ================= */
+
+.light {
+  --bg-page: #f5f5f5;
+  --bg-card: #ffffff;
+  --bg-image: linear-gradient(135deg, #f6f6f6, #ececec);
+  --text-main: #111;
+  --text-muted: #666;
+  --icon-bg: #ffffff;
+  --icon-color: #333;
+  --btn-bg: #000;
+  --btn-text: #ffffff;
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
+  --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.18);
+}
+
+.dark {
+  --bg-page: #0f0f0f;
+  --bg-card: #1a1a1a;
+  --bg-image: linear-gradient(135deg, #222, #111);
+  --text-main: #f5f5f5;
+  --text-muted: #aaa;
+  --icon-bg: #222;
+  --icon-color: #eee;
+  --btn-bg: #ffffff;
+  --btn-text: #000000;
+  --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 18px 40px rgba(0, 0, 0, 0.8);
+}
+
+/* ================= PRODUCT CARD ================= */
+
+.productcard {
   width: 15vw;
   min-width: 220px;
-
-  background: #ffffff;
+  background: var(--bg-card);
+  color: var(--text-main);
   border-radius: 14px;
   overflow: hidden;
 
@@ -13,40 +44,44 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   cursor: pointer;
 
-  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease,
+    background 0.3s ease;
 }
 
-/* Card hover animation */
-.product-card:hover {
+/* Hover */
+.productcard:hover {
   transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18);
+  box-shadow: var(--shadow-hover);
 }
 
-/* ================= IMAGE SECTION ================= */
+/* ================= IMAGE ================= */
+
 .image-box {
   flex: 0 0 40%;
-  background: linear-gradient(135deg, #f6f6f6, #ececec);
+  background: var(--bg-image);
 
   display: flex;
   align-items: center;
   justify-content: center;
 
   overflow: hidden;
-  position: relative; /* REQUIRED for icons */
+  position: relative;
 }
 
-/* Image animation */
 .image-box img {
-  max-width: 85%;
-  max-height: 85%;
+  max-width: 60%;
+  max-height: 60%;
   object-fit: contain;
-
   transition: transform 0.4s ease;
 }
 
-.product-card:hover .image-box img {
+.productcard:hover .image-box img {
   transform: scale(1.1);
 }
+
+/* ================= ICONS ================= */
 
 .top-icons {
   position: absolute;
@@ -61,10 +96,11 @@
 .icon-btn {
   width: 34px;
   height: 34px;
-
   border-radius: 50%;
   border: none;
-  background: #fff;
+
+  background: var(--icon-bg);
+  color: var(--icon-color);
 
   display: flex;
   align-items: center;
@@ -73,12 +109,14 @@
   cursor: pointer;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .icon-btn svg {
   font-size: 15px;
-  color: #333;
+  color: var(--icon-color);
 }
 
 .icon-btn:hover {
@@ -86,13 +124,12 @@
   box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
 }
 
-.icon-btn:hover svg {
-  color: #e63946;
-}
-
+.icon-btn:hover svg,
 .icon-btn.liked svg {
   color: #e63946;
 }
+
+/* ================= PRODUCT INFO ================= */
 
 .product-info {
   flex: 1;
@@ -103,15 +140,8 @@
 }
 
 .product-info h3 {
-  font-size: 13px;
-  margin-bottom: 6px;
-}
-
-/* Description clamp */
-.desc {
-  font-size: 14px;
-  color: #666;
-  margin-bottom: 10px;
+  font-size: 15px;
+  margin-top: 20px;
 
   overflow: hidden;
   display: -webkit-box;
@@ -119,12 +149,25 @@
   -webkit-box-orient: vertical;
 }
 
-/* Rating + price */
+.desc {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin-top: 20px;
+  margin-bottom: 10px;
+
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+/* ================= RATING + PRICE ================= */
+
 .rating-price {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 15px;
 }
 
 .rating {
@@ -138,25 +181,35 @@
 }
 
 /* ================= BUTTON ================= */
+
 .cart-btn {
   margin-top: auto;
-
   width: 100%;
   padding: 10px;
-
-  background: linear-gradient(135deg, #111, #333);
-  color: #fff;
   border: none;
   border-radius: 8px;
 
   font-size: 15px;
   cursor: pointer;
 
-  transition: background 0.3s ease, transform 0.2s ease;
+  background: var(--btn-bg);
+  color: var(--btn-text);
+
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
 }
 
-/* Button animation */
 .cart-btn:hover {
-  background: linear-gradient(135deg, #000, #444);
   transform: scale(1.03);
+  opacity: 0.9;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 480px) {
+  .productcard {
+    width: 70%;
+    height: 43vh;
+  }
 }

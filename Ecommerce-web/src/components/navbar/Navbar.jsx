@@ -2,10 +2,12 @@ import { useContext, useState, useRef, useEffect } from "react";
 import { FaUserCircle } from "react-icons/fa";
 import { Link, useNavigate } from "react-router-dom";
 import ApiContext from "../../context/ApiContext";
+import { RxHamburgerMenu } from "react-icons/rx";
 import "./Navbar.css";
 
 function Navbar() {
-  const { user, setUser, searchItem, setSearchItem } = useContext(ApiContext);
+  const { user, setUser, searchItem, setSearchItem, setTheam, theam } =
+    useContext(ApiContext);
 
   const [showCard, setShowCard] = useState(false);
   const profileRef = useRef(null);
@@ -39,19 +41,25 @@ function Navbar() {
     navigate("/app");
   }
 
+  function theamChanger(e) {
+    setTheam(e.target.checked);
+  }
+
   return (
-    <nav className="nav-container">
+    <nav className={`nav-container ${theam ? "dark" : ""}`}>
       <h1 className="nav-logo" onClick={goHomePage}>
         ShopVerse
       </h1>
 
       <input
         type="text"
-        className="search-input"
+        className={`search-input ${theam ? "dark" : ""}`}
         placeholder="Search products..."
         value={searchItem}
         onChange={(e) => setSearchItem(e.target.value)}
       />
+
+      <RxHamburgerMenu className="pageNavigateOption" />
 
       <ul className="nav-links">
         <li>
@@ -65,9 +73,35 @@ function Navbar() {
         </li>
       </ul>
 
+      <div className="toggle-wrapper">
+        <input
+          className="toggle-checkbox"
+          type="checkbox"
+          onChange={theamChanger}
+        />
+        <div className="toggle-container">
+          <div className="toggle-button">
+            <div className="toggle-button-circles-container">
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+              <div className="toggle-button-circle" />
+            </div>
+          </div>
+        </div>
+      </div>
+
       <div className="profile" ref={profileRef}>
         <FaUserCircle
-          className="profile-icon"
+          className={`profile-icone ${theam ? "dark" : ""}`}
           onClick={() => setShowCard((p) => !p)}
         />
 

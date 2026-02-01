@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import ApiContext from "../../context/ApiContext";
-import ProductCard from "../productCard/ProductCard";
+import ProductCard from "../../components/productCard/ProductCard";
 import "./Product.css";
 
 function Product() {
@@ -18,7 +18,7 @@ function Product() {
 
   const filteredProducts = search
     ? products.filter((product) =>
-        product.title.toLowerCase().startsWith(search)
+        product.title.toLowerCase().startsWith(search),
       )
     : [];
 
