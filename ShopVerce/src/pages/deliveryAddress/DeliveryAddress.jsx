@@ -19,6 +19,7 @@ function DeliveryAddress({ onSave, onClose }) {
 
   function handleSubmit() {
     onSave(address);
+    location.reload();
   }
 
   return (

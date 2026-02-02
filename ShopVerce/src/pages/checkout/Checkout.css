@@ -44,15 +44,34 @@
   padding: 8px;
 }
 
+.address-item input {
+  width: 40px;
+  margin-top: 6px;
+}
+
 .address-text {
   flex: 1;
   font-size: 14px;
+  display: flex;
 }
 
 .delete-btn {
   border: none;
   background: transparent;
   cursor: pointer;
+}
+
+.addAddress {
+  height: 20px;
+  width: 40px;
+  font-size: 20px;
+  background-color: #e85c12;
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 7px;
 }
 
 .section {
@@ -63,6 +82,14 @@
   margin-bottom: 20px;
 }
 
+.section h5 {
+  margin-bottom: 10px;
+}
+
+.upiInput {
+  width: 13vw;
+}
+
 .payment-methods {
   display: flex;
   gap: 10px;
@@ -70,14 +97,16 @@
 }
 
 .pay {
-  padding: 10px 14px;
-  border-radius: 10px;
-  border: 1px solid #ddd;
-  background: #fff;
+  border: none;
+  cursor: pointer;
 }
 
-.pay.active {
-  background: #f2f1ff;
+.pay img {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: #fff;
+  width: 60px;
+  height: 40px;
 }
 
 input {
@@ -192,6 +221,10 @@ input {
   color: #374151;
 }
 
+.dark .pay {
+  background-color: white;
+}
+
 .checkout-right hr {
   border: none;
   border-top: 1px solid #e5e7eb;
@@ -222,6 +255,10 @@ input {
 .coupon button {
   font-weight: 500;
   cursor: pointer;
+}
+
+.dark .delete-btn {
+  color: #fff;
 }
 
 /* ================= MODAL ================= */

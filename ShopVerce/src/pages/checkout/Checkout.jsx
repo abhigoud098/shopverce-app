@@ -17,10 +17,7 @@ function Checkout() {
   const address = JSON.parse(localStorage.getItem("userAddress")) || [];
 
   const subtotal = Math.floor(
-    productInfo.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    )
+    productInfo.reduce((total, item) => total + item.price * item.quantity, 0),
   );
 
   useEffect(() => {
@@ -28,7 +25,7 @@ function Checkout() {
       const stored = JSON.parse(localStorage.getItem("userAddress")) || [];
       localStorage.setItem(
         "userAddress",
-        JSON.stringify([...stored, savedAddress])
+        JSON.stringify([...stored, savedAddress]),
       );
     }
   }, [savedAddress]);
@@ -50,9 +47,21 @@ function Checkout() {
   const delivery = subtotal > 500 ? 0 : 99;
   const total = Math.floor(subtotal + delivery);
 
-  function showPaymentSuccess() {
+ function showPaymentSuccess() {
+  toast.loading("Processing payment...");
+
+  setTimeout(() => {
+    toast.dismiss();
     toast.success("Payment successful!");
-    navigate("/app");
+
+    setTimeout(() => {
+      navigate("/app");
+    }, 5000); 
+  }, 3000);
+}
+
+  function addressadd() {
+    setShowAddressModal(true);
   }
 
   return (
@@ -71,18 +80,18 @@ function Checkout() {
             {address.length > 0 ? (
               address.map((addr, index) => (
                 <div className="address-item" key={index}>
+                  <div className="address-text">
+                    <strong>{addr.name}</strong> · {addr.phone}
+                    <br />
+                    {addr.addressLine}, {addr.city} – {addr.pincode}
+                  </div>
+
                   <input
                     type="radio"
                     name="selectedAddress"
                     checked={selectedAddress?.phone === addr.phone}
                     onChange={() => setSelectedAddress(addr)}
                   />
-
-                  <div className="address-text">
-                    <strong>{addr.name}</strong> · {addr.phone}
-                    <br />
-                    {addr.addressLine}, {addr.city} – {addr.pincode}
-                  </div>
 
                   <button
                     className="delete-btn"
@@ -95,6 +104,9 @@ function Checkout() {
             ) : (
               <p>No saved address</p>
             )}
+            <button className="addAddress" onClick={addressadd}>
+              +
+            </button>
           </div>
 
           {showAddressModal && (
@@ -113,12 +125,15 @@ function Checkout() {
 
           {/* PAYMENT */}
           <div className="section">
-            <h4>Payment Information</h4>
+            <h4>Card Payment</h4>
 
             <div className="payment-methods">
-              <button className="pay active">💳 Card</button>
-              <button className="pay">PayPal</button>
-              <button className="pay">Klarna</button>
+              <button className="pay">
+                <img src="../src/assets/visa.png" alt="visa" />
+              </button>
+              <button className="pay">
+                <img src="../src/assets/rupay.png" alt="rupaya" />
+              </button>
             </div>
 
             <input placeholder="Name on card" />
@@ -128,6 +143,28 @@ function Checkout() {
               <input placeholder="MM / YY" />
               <input placeholder="CVV" />
             </div>
+          </div>
+
+          <div className="section">
+            <h4>UPI Payment</h4>
+
+            <div className="payment-methods">
+              <button className="pay">
+                <img src="../src/assets/phonepe.svg" alt="UPI" />
+              </button>
+              <button className="pay">
+                <img src="../src/assets/googlepay.svg" alt="" />
+              </button>
+              <button className="pay">
+                <img src="../src/assets/paytm.svg" alt="" />
+              </button>
+            </div>
+
+            <input
+              class="upiInput"
+              type="text"
+              placeholder="Enter your UPI Id"
+            />
           </div>
 
           <button className="confirm" onClick={showPaymentSuccess}>
@@ -172,9 +209,7 @@ function Checkout() {
             <span>${total}</span>
           </div>
 
-          <div className="saving">
-            🎉 You saved ${discount.toFixed(0)}
-          </div>
+          <div className="saving">🎉 You saved ${discount.toFixed(0)}</div>
 
           <div className="coupon">
             <input placeholder="Coupon code" />
