@@ -12,7 +12,6 @@ function Home() {
   const [startProduct] = useState(() => Math.floor(Math.random() * 30));
   const [productNum, setProductNum] = useState(startProduct);
 
-  // 🎯 Create Fuse.js instance (memoized so it doesn’t recreate on every render)
   const fuse = useMemo(() => {
     if (!products.length) return null;
     return new Fuse(products, {
@@ -27,7 +26,7 @@ function Home() {
     return fuse.search(searchItem).map((result) => result.item);
   }, [fuse, searchItem]);
 
-  // 🔁 Auto-rotate banner product
+  //  Auto-rotate banner product
   useEffect(() => {
     const timer = setInterval(() => {
       setProductNum((prev) =>

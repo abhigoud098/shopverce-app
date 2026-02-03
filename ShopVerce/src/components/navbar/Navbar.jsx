@@ -102,11 +102,11 @@ function Navbar() {
       <div className="profile" ref={profileRef}>
         <FaUserCircle
           className={`profile-icone ${theam ? "dark" : ""}`}
-          onClick={() => setShowCard((p) => !p)}
+          onClick={() => setShowCard(true)}
         />
 
         {showCard && user && (
-          <div className="account-card">
+          <div className={`account-card ${theam ? "dark" : ""}`}>
             <div className="account-header">My Account</div>
 
             <div className="account-body">

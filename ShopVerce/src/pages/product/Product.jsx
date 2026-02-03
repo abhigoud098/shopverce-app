@@ -44,7 +44,7 @@ function Product() {
   return (
     <div className="main-container">
       <div className="still-you-want">
-        {products.slice(0, 12).map((item) => (
+        {products.slice(0, 30).map((item) => (
           <div className="product-component" key={item.id}>
             <ProductCard data={item} />
           </div>

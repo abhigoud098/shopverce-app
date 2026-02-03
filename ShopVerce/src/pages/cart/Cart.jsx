@@ -15,7 +15,7 @@ function Cart() {
 
   function quantityIncrease(itemId) {
     const updatedCart = productInfo.map((item) =>
-      item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item
+      item.id === itemId ? { ...item, quantity: item.quantity + 1 } : item,
     );
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
     location.reload();
@@ -25,17 +25,14 @@ function Cart() {
     const updatedCart = productInfo.map((item) =>
       item.id === itemId && item.quantity > 1
         ? { ...item, quantity: item.quantity - 1 }
-        : item
+        : item,
     );
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
     location.reload();
   }
 
   const subtotal = Math.floor(
-    productInfo.reduce(
-      (total, item) => total + item.price * item.quantity,
-      0
-    )
+    productInfo.reduce((total, item) => total + item.price * item.quantity, 0),
   );
 
   const delivery = subtotal > 500 ? 0 : 99;

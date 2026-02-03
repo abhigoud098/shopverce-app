@@ -24,7 +24,6 @@ function Login() {
     );
 
     if (existingUser) {
-      console.log(existingUser);
       setUser(existingUser);
       toast.success("Login successful");
       navigate("/app");

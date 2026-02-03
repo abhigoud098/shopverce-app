@@ -26,7 +26,6 @@ function ProductCard({ data }) {
     const storedCartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
     const existingProduct = storedCartItems.find((item) => item.id === id);
-    console.log(existingProduct);
 
     if (existingProduct) {
       existingProduct.quantity += 1;

@@ -14,6 +14,7 @@ function Checkout() {
   const navigate = useNavigate();
 
   const productInfo = JSON.parse(localStorage.getItem("cartItems")) || [];
+  localStorage.key(0);
   const address = JSON.parse(localStorage.getItem("userAddress")) || [];
 
   const subtotal = Math.floor(
@@ -47,18 +48,21 @@ function Checkout() {
   const delivery = subtotal > 500 ? 0 : 99;
   const total = Math.floor(subtotal + delivery);
 
- function showPaymentSuccess() {
-  toast.loading("Processing payment...");
-
-  setTimeout(() => {
-    toast.dismiss();
-    toast.success("Payment successful!");
+  function showPaymentSuccess() {
+    toast.loading("Processing payment...");
 
     setTimeout(() => {
-      navigate("/app");
-    }, 5000); 
-  }, 3000);
-}
+      toast.dismiss();
+      toast.success("Payment successful!");
+
+      localStorage.removeItem("cartItems");
+      localStorage.setItem("cartItems", JSON.stringify([]));
+
+      setTimeout(() => {
+        navigate("/app");
+      }, 5000);
+    }, 3000);
+  }
 
   function addressadd() {
     setShowAddressModal(true);
@@ -111,7 +115,7 @@ function Checkout() {
 
           {showAddressModal && (
             <div className="modal-overlay">
-              <div className="modal-content">
+              <div className={`modal-content ${them ? "dark" : ""}`}>
                 <DeliveryAddress
                   onSave={(address) => {
                     setSavedAddress(address);

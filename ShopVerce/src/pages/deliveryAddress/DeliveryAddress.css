@@ -77,6 +77,19 @@
   cursor: pointer;
 }
 
+.dark .modal-content {
+  background-color: #000;
+  color: #fff;
+}
+
+.dark .change-btn {
+  color: #fff;
+}
+
+.dark .save-btn {
+  border: 1px solid #fff;
+}
+
 /* ===== ANIMATION ===== */
 @keyframes popup {
   from {

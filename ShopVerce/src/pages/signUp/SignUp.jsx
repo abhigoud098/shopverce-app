@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import "./SignUp.css";
 import { useForm } from "react-hook-form";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import ApiContext from "../../context/ApiContext";
@@ -19,34 +19,32 @@ function SignUp() {
 
   const onSubmit = (data) => {
     setUserInfo(data);
+    onRegister(userInfo);
   };
 
-  console.log(userInfo);
+  const onRegister = (userInfo) => {
+    const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
 
-  useEffect(() => {
-    if (Object.keys(userInfo).length > 0) {
-      const storedUsers = JSON.parse(localStorage.getItem("users")) || [];
-      const userExists = storedUsers.find(
-        (user) => user.email.toLowerCase() === userInfo.email.toLowerCase(),
-      );
-      if (userExists) {
-        toast.error(
-          "This email or user alrady exist please enter another email..!",
-        );
-        return;
-      }
-      const updatedUsers = [...storedUsers, userInfo];
-      localStorage.setItem("users", JSON.stringify(updatedUsers));
+    const userExists = storedUsers.find(
+      (user) => user.email.toLowerCase() === userInfo.email.toLowerCase(),
+    );
 
-      toast.success("User registered successfully!");
-      reset();
+    if (userExists) {
+      toast.error("This email already exists. Please use another email.");
+      return;
     }
-  }, [userInfo]);
+
+    const updatedUsers = [...storedUsers, userInfo];
+    localStorage.setItem("users", JSON.stringify(updatedUsers));
+
+    toast.success("User registered successfully!");
+    reset();
+  };
 
   return (
     <>
       <ToastContainer position="top-right" theme="colored" />
-      
+
       <div className="signup">
         <div className="hader">
           <span className="logo-name">Shop Verse</span>
