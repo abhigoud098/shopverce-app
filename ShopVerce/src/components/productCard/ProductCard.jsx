@@ -3,17 +3,19 @@ import { FaHeart, FaRegHeart, FaShareAlt } from "react-icons/fa";
 import "./ProductCard.css";
 import ApiContext from "../../context/ApiContext";
 
-function ProductCard({ data }) {
+function ProductCard({ item }) {
   const [liked, setLiked] = useState(false);
-  const { theam } = useContext(ApiContext);
+  const { theam, data } = useContext(ApiContext);
+  console.log(data);
+  
 
   const handleShare = async () => {
     const shareUrl = window.location.href;
 
     if (navigator.share) {
       await navigator.share({
-        title: data?.title,
-        text: data?.description,
+        title: item?.title,
+        text: item?.description,
         url: shareUrl,
       });
     } else {
@@ -31,7 +33,7 @@ function ProductCard({ data }) {
       existingProduct.quantity += 1;
     } else {
       storedCartItems.push({
-        ...data,
+        ...item,
         quantity: 1,
       });
     }
@@ -39,14 +41,23 @@ function ProductCard({ data }) {
     localStorage.setItem("cartItems", JSON.stringify(storedCartItems));
   }
 
+  function Wishitem(id) {
+    setLiked(!liked);
+    const wishlist = JSON.parse(localStorage.getItem("wishList")) || [];
+    const wishitem = data?.products?.find((item) => item.id === id);
+    console.log(wishitem);
+    wishlist.push(wishitem);
+    localStorage.setItem("wishList", JSON.stringify(wishlist));
+  }
+
   return (
     <div className={`productcard ${theam ? "dark" : ""}`}>
       <div className="image-box">
-        <img src={data?.images[0]} alt={data?.brand} />
+        <img src={item?.images[0]} alt={item?.brand} />
 
         {/* TOP RIGHT ICONS */}
         <div className="top-icons">
-          <button className="icon-btn" onClick={() => setLiked(!liked)}>
+          <button className="icon-btn" onClick={() => Wishitem(item.id)}>
             {liked ? <FaHeart /> : <FaRegHeart />}
           </button>
 
@@ -57,15 +68,20 @@ function ProductCard({ data }) {
       </div>
 
       <div className="product-info">
-        <h3>{data?.title}</h3>
-        <p c className={`desc ${theam ? "dark" : ""}`} >{data?.description}</p>
+        <h3>{item?.title}</h3>
+        <p c className={`desc ${theam ? "dark" : ""}`}>
+          {item?.description}
+        </p>
 
         <div className="rating-price">
-          <span className="rating">⭐ {data?.rating}</span>
-          <span className="original-price">${data?.price}</span>
+          <span className="rating">⭐ {item?.rating}</span>
+          <span className="original-price">${item?.price}</span>
         </div>
 
-        <button  className={`cart-btn ${theam ? "dark" : "light"}`} onClick={() => sendIdOfProduct(data.id)}>
+        <button
+          className={`cart-btn ${theam ? "dark" : "light"}`}
+          onClick={() => sendIdOfProduct(item.id)}
+        >
           Add to Cart
         </button>
       </div>

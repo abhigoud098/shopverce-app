@@ -79,7 +79,7 @@ function Home() {
       <div className="still-you-want">
         {products.slice(12, 18).map((item) => (
           <div className="product-component" key={item.id}>
-            <ProductCard data={item} />
+            <ProductCard item={item} />
           </div>
         ))}
       </div>

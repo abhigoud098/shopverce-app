@@ -71,6 +71,9 @@ function Navbar() {
         <li>
           <Link to="/app/cart">Cart</Link>
         </li>
+         <li>
+          <Link to="/app/wishList">WishList</Link>
+        </li>
       </ul>
 
       <div className="toggle-wrapper">

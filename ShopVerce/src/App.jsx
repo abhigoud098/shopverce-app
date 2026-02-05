@@ -9,6 +9,7 @@ import "./App.css";
 import SignUp from "./pages/signUp/SignUp";
 import Checkout from "./pages/checkout/Checkout";
 import DeliveryAddress from "./pages/deliveryAddress/DeliveryAddress";
+import WishList from "./pages/wishList/WishList";
 import { useContext } from "react";
 import ApiContext from "./context/ApiContext";
 
@@ -43,6 +44,7 @@ function App() {
         { path: "/app/cart", element: <Cart /> },
         { path: "/app/checkout", element: <Checkout /> },
         { path: "/app/DeliveryAddress", element: <DeliveryAddress /> },
+        { path: "/app/wishList", element: <WishList/> },
       ],
     },
   ]);
