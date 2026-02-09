@@ -1,3 +1,5 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Liter:wght@300;400;500;600&display=swap");
+
 .footer {
   background-color: #1e293b;
   color: #f4f4f5;
@@ -60,6 +62,15 @@
   font-size: 22px;
   font-weight: bold;
   color: #ff7b00;
+  font-family: "Pacifico", cursive;
+  font-size: 26px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.footer-brand img {
+  height: 30px;
 }
 
 .footer-meta span {

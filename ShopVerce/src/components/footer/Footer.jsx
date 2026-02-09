@@ -57,7 +57,7 @@ const Footer = () => {
 
       {/* Bottom bar */}
       <div className="footer-bottom">
-        <div className="footer-brand">ShopVerca</div>
+        <div className="footer-brand"><img src="/src/assets/icone.png" alt="icon"/>ShopVerca</div>
 
         <div className="footer-meta">
           <span>🌐 English</span>

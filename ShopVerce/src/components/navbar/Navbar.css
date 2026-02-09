@@ -276,6 +276,12 @@
     display: none;
   }
 
+  .nav-logo {
+    display: block;
+    font-size: 15px;
+    margin-right: 10px;
+  }
+
   .search-input {
     margin-right: 20px;
   }
@@ -286,5 +292,28 @@
 
   .pageNavigateOption {
     display: block;
+    font-size: 30px;
+  }
+
+  .toggle-wrapper {
+    margin-left: 20px;
+  }
+
+  .toggle-container {
+    width: 2em;
+    height: 1em;
+  }
+
+  .toggle-button {
+    width: 1em;
+    height: 1em;
+  }
+
+  .toggle-checkbox:checked + .toggle-container > .toggle-button {
+    left: 0.99em;
+  }
+
+  .search-input {
+    height: 35px;
   }
 }

@@ -7,6 +7,7 @@ function ApiContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [userInfo, setUserInfo] = useState("");
   const [theam, setTheam] = useState("");
+  const [activeHambar, setAtiveHambar] = useState(false);
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -32,6 +33,8 @@ function ApiContextProvider({ children }) {
         setUserInfo,
         theam,
         setTheam,
+        activeHambar,
+        setAtiveHambar,
       }}
     >
       {children}

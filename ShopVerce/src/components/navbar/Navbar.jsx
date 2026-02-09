@@ -4,10 +4,18 @@ import { Link, useNavigate } from "react-router-dom";
 import ApiContext from "../../context/ApiContext";
 import { RxHamburgerMenu } from "react-icons/rx";
 import "./Navbar.css";
+import "../sideBar/Sidebar";
 
 function Navbar() {
-  const { user, setUser, searchItem, setSearchItem, setTheam, theam } =
-    useContext(ApiContext);
+  const {
+    user,
+    setUser,
+    searchItem,
+    setSearchItem,
+    setTheam,
+    theam,
+    setAtiveHambar,
+  } = useContext(ApiContext);
 
   const [showCard, setShowCard] = useState(false);
   const profileRef = useRef(null);
@@ -45,6 +53,10 @@ function Navbar() {
     setTheam(e.target.checked);
   }
 
+  function showSidebar() {
+    setAtiveHambar((prev) => !prev);
+  }
+
   return (
     <nav className={`nav-container ${theam ? "dark" : ""}`}>
       <h1 className="nav-logo" onClick={goHomePage}>
@@ -59,7 +71,7 @@ function Navbar() {
         onChange={(e) => setSearchItem(e.target.value)}
       />
 
-      <RxHamburgerMenu className="pageNavigateOption" />
+      <RxHamburgerMenu className="pageNavigateOption" onClick={showSidebar} />
 
       <ul className="nav-links">
         <li>
@@ -71,7 +83,7 @@ function Navbar() {
         <li>
           <Link to="/app/cart">Cart</Link>
         </li>
-         <li>
+        <li>
           <Link to="/app/wishList">WishList</Link>
         </li>
       </ul>

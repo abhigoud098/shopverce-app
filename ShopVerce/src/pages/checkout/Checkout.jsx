@@ -5,6 +5,7 @@ import DeliveryAddress from "../deliveryAddress/DeliveryAddress";
 import { toast, ToastContainer } from "react-toastify";
 import ApiContext from "../../context/ApiContext";
 
+
 function Checkout() {
   const [showAddressModal, setShowAddressModal] = useState(false);
   const [savedAddress, setSavedAddress] = useState(null);
@@ -132,12 +133,15 @@ function Checkout() {
             <h4>Card Payment</h4>
 
             <div className="payment-methods">
-              <button className="pay">
+              <label className="pay-card">
+                <input type="radio" name="paymentMethod" value="visa" />
                 <img src="../src/assets/visa.png" alt="visa" />
-              </button>
-              <button className="pay">
-                <img src="../src/assets/rupay.png" alt="rupaya" />
-              </button>
+              </label>
+
+              <label className="pay-card">
+                <input type="radio" name="paymentMethod" value="rupay" />
+                <img src="../src/assets/rupay.png" alt="rupay" />
+              </label>
             </div>
 
             <input placeholder="Name on card" />
@@ -153,21 +157,26 @@ function Checkout() {
             <h4>UPI Payment</h4>
 
             <div className="payment-methods">
-              <button className="pay">
-                <img src="../src/assets/phonepe.svg" alt="UPI" />
-              </button>
-              <button className="pay">
-                <img src="../src/assets/googlepay.svg" alt="" />
-              </button>
-              <button className="pay">
-                <img src="../src/assets/paytm.svg" alt="" />
-              </button>
+              <label className="pay-card">
+                <input type="radio" name="paymentMethod" value="phonepe" />
+                <img src="../src/assets/phonepe.svg" alt="phonepe" />
+              </label>
+
+              <label className="pay-card">
+                <input type="radio" name="paymentMethod" value="googlepay" />
+                <img src="../src/assets/googlepay.svg" alt="gpay" />
+              </label>
+
+              <label className="pay-card">
+                <input type="radio" name="paymentMethod" value="paytm" />
+                <img src="../src/assets/paytm.svg" alt="paytm" />
+              </label>
             </div>
 
             <input
-              class="upiInput"
+              className="upiInput"
               type="text"
-              placeholder="Enter your UPI Id"
+              placeholder="Enter your UPI ID"
             />
           </div>
 

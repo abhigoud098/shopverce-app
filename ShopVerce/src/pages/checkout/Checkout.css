@@ -88,25 +88,45 @@
 
 .upiInput {
   width: 13vw;
+  margin-top: 20px;
 }
 
 .payment-methods {
   display: flex;
-  gap: 10px;
-  margin-bottom: 12px;
+  gap: 12px;
 }
 
-.pay {
-  border: none;
+.pay-card {
+  border: 2px solid #ddd;
+  border-radius: 12px;
+  padding: 14px;
   cursor: pointer;
+  transition: all 0.25s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
 }
 
-.pay img {
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: #fff;
-  width: 60px;
-  height: 40px;
+.pay-card img {
+  height: 30px;
+  pointer-events: none;
+}
+
+/* hide radio */
+.pay-card input {
+  display: none;
+}
+
+/* ACTIVE STATE */
+.pay-card input:checked + img {
+  transform: scale(1.05);
+}
+
+.pay-card:has(input:checked) {
+  border-color: #111;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+  background: #f9f9f9;
 }
 
 input {
@@ -115,6 +135,7 @@ input {
   margin-bottom: 10px;
   border-radius: 10px;
   border: 1px solid #ddd;
+  margin-top: 15px;
 }
 
 .card-row {
@@ -255,6 +276,7 @@ input {
 .coupon button {
   font-weight: 500;
   cursor: pointer;
+  margin-top: 15px;
 }
 
 .dark .delete-btn {

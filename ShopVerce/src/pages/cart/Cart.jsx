@@ -116,7 +116,7 @@ function Cart() {
         </div>
       </div>
 
-      <Footer />
+      <Footer/>
     </div>
   );
 }
