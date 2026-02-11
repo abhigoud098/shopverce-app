@@ -1,4 +1,4 @@
-Shopverce — E-commerce Frontend (Polished README)
+```Shopverce — E-commerce Frontend (Polished README)
 
 Shopverce is a modern, responsive e-commerce frontend where users can browse products, add them to cart, check discounts and stock availability, manage a wishlist, and complete a simulated checkout — all built without a backend (uses localStorage for persistence).
 
@@ -73,7 +73,7 @@ Add order history, admin panel, and search filters (price ranges, categories).
 Polish UI with animations and accessibility tweaks (aria labels, keyboard nav).
 
 📝 Notes & disclaimers
-Current authentication and payments are simulated for development/demo purposes — no real user credentials or money are processed.
+Current authentication and payments are simulated for development/demo purposes — no real user credentials or money are processed.```
 localStorage is used so the app behaves like a single-user demo; migrating to a backend will be part of future work.
 
 
