@@ -4,6 +4,10 @@
 
 ```Shopverce — E-commerce Frontend (Polished README)
 
+⚠️ Note:
+Some features are still not working perfectly, and a few parts are under active development.
+I’m continuou
+
 Shopverce is a modern, responsive e-commerce frontend where users can browse products, add them to cart, check discounts and stock availability, manage a wishlist, and complete a simulated checkout — all built without a backend (uses localStorage for persistence).
 
 🚀 Project overview
