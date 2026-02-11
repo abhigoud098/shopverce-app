@@ -2,6 +2,8 @@
   height: 85vh;
   width: 100vw;
   padding: 20px;
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 .cart-title {
@@ -82,10 +84,7 @@
   border: none;
   color: #007185;
   cursor: pointer;
-}
-
-.remove-btn:hover {
-  text-decoration: underline;
+  width: 60px;
 }
 
 .summary-row {

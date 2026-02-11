@@ -42,13 +42,13 @@ function Cart() {
     );
   };
 
-  const subtotal = cartItems.reduce(
+  const subtotal = Math.floor(cartItems.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
-  );
+  ));
 
   const delivery = subtotal > 500 ? 0 : 99;
-  const total = subtotal + delivery;
+  const total = Math.floor(subtotal + delivery);
 
   return (
     <div className={`cart-wrapper ${theam ? "dark" : "light"}`}>

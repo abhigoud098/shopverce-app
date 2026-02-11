@@ -8,7 +8,6 @@ import "../sideBar/Sidebar";
 
 function Navbar() {
   const {
-    user,
     setUser,
     searchItem,
     setSearchItem,
@@ -16,6 +15,11 @@ function Navbar() {
     theam,
     setAtiveHambar,
   } = useContext(ApiContext);
+
+  const user = JSON.parse(localStorage.getItem("currentUser")) || {};
+  // const currentUser = users.find((loginUser) => user.email === loginUser.email);
+
+
 
   const [showCard, setShowCard] = useState(false);
   const profileRef = useRef(null);

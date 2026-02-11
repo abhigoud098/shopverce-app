@@ -6,8 +6,6 @@ import ApiContext from "../../context/ApiContext";
 function ProductCard({ item }) {
   const [liked, setLiked] = useState(false);
   const { theam, data } = useContext(ApiContext);
-  console.log(data);
-  
 
   const handleShare = async () => {
     const shareUrl = window.location.href;
