@@ -2,6 +2,8 @@
 
 ![Landingpage](landingpage.png)
 
+[▶ Watch Demo](video/demo.mp4)
+
 ```Shopverce — E-commerce Frontend (Polished README)
 
 ⚠️ Note:
