@@ -1,6 +1,6 @@
 ## 📸 Screenshots
 
-![Landingpage](screenshots/landingpage.png)
+![Landingpage](landingpage.png)
 
 ```Shopverce — E-commerce Frontend (Polished README)
 
